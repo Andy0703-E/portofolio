@@ -1,219 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
 
-    <link rel="stylesheet" href="style.css" />
-    <title>Portfolio Website</title>
-  </head>
-  <body>
-    <header>
-      <a href="#" class="logo">Andi Agung</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Andi Agung</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-      <!-- Nav Toggle Button for Mobile -->
-      <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            console.log("Sidebar toggled");
+            sidebar.classList.toggle('-translate-x-full');
+        }
 
-      <nav>
-        <a href="#" class="active"> Home</a>
-        <a href="#services">Services</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-      </nav>
-    </header>
+    </script>
+    <style>
+        nav {
+            z-index: 2;
+        }
 
-    <section class="home">
-      <div class="home-img">
-        <img src="main.jpg" alt="" />
-      </div>
-      <div class="home-content">
-        <h1>Hi, I'am <span class="typing-text"></span></h1>
-        <p>
-          Saya adalah seorang Web Developer yang berfokus pada pembuatan website
-          modern dan responsif. Dengan pengalaman luas dalam pengembangan
-          front-end dan back-end, saya memiliki keterampilan dalam menggunakan
-          berbagai teknologi dan framework terkini untuk menciptakan aplikasi
-          web yang tidak hanya fungsional tetapi juga menarik secara visual.
+        body {
+            scroll-behavior: smooth;
+        }
+
+
+        .contact-section {
+            animation: slide-up 1s ease-out;
+        }
+
+        .transform {
+            transition: transform 0.3s ease;
+        }
+
+        #sidebar {
+            z-index: 10;
+        }
+
+
+
+        @keyframes slide-up {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-100">
+    <!-- Navbar untuk Desktop dan Mobile -->
+    <nav class="bg-gray-800 shadow-lg p-4 w-full fixed top-0">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <a href="./" class="text-2xl font-semibold text-gray-100 ">
+                <em>Andi <span class="text-orange-500">Agung.</span></em>
+            </a>
+
+            <!-- Menu Navbar untuk Desktop -->
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#home" class="text-gray-300 hover:text-orange-500">Home</a></li>
+                <li><a href="#about" class="text-gray-300 hover:text-orange-500">About</a></li>
+                <li><a href="#projects" class="text-gray-300 hover:text-orange-500">Projects</a></li>
+                <li><a href="#contact" class="text-gray-300 hover:text-orange-500">Contact</a></li>
+            </ul>
+
+            <!-- Tombol Hamburger untuk Mobile -->
+            <button onclick="toggleSidebar()" class="md:hidden text-gray-100 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Sidebar untuk Mobile -->
+    <div id="sidebar"
+        class="fixed top-0 left-0 w-64 h-full bg-gray-800 shadow-lg transform -translate-x-full transition-transform md:hidden">
+        <div class="p-4 flex justify-between items-center border-b border-gray-700">
+            <h2 class="text-xl font-semibold text-gray-100">Menu</h2>
+            <button onclick="toggleSidebar()" class="text-gray-100 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex flex-col p-4 space-y-4">
+            <li><a href="#home" class="text-gray-300 hover:text-orange-500">Home</a></li>
+            <li><a href="#about" class="text-gray-300 hover:text-orange-500">About</a></li>
+            <li><a href="#projects" class="text-gray-300 hover:text-orange-500">Projects</a></li>
+            <li><a href="#contact" class="text-gray-300 hover:text-orange-500">Contact</a></li>
+        </ul>
+    </div>
+
+    <section id="home" class="min-h-screen flex flex-col items-center justify-center text-gray-100 bg-gray-700"
+        data-aos="zoom-out" data-aos-duration="2000">
+        <!-- Judul -->
+        <h1 class="text-4xl text-center font-bold mb-4" data-aos="fade-right" data-aos-duration="2000">
+            Welcome to My Portfolio
+        </h1>
+
+        <!-- Deskripsi Singkat -->
+        <p class="text-lg text-center max-w-xl mb-6" data-aos="fade-up" data-aos-duration="2000">
+            Halo, saya Andi Agung, seorang pengembang web yang bersemangat untuk menciptakan pengalaman digital yang
+            menarik dan
+            fungsional.
+            Jelajahi portofolio saya untuk melihat proyek dan keterampilan saya.
         </p>
-        <div class="social-icons">
-          <a
-            href="https://www.facebook.com/dadung.dadung.169405"
-            target="_blank"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-          <a href="https://dadung2707@gmail.com" target="_blank"
-            ><i class="fab fa-google"></i
-          ></a>
-          <a href="https://www.instagram.com/dadung0703" target="_blank"
-            ><i class="fab fa-instagram"></i
-          ></a>
-          <a href="https://wa.me/6285825163362?text= Halo " target="_blank"
-            ><i class="fab fa-whatsapp"></i
-          ></a>
-        </div>
-        <a href="https://wa.me/6285825163362" class="btn">Contact</a>
-      </div>
     </section>
 
-    <section id="services" class="services">
-      <h2 class="heading">My <span>Services</span></h2>
-      <div class="services-container">
-        <div class="service-box">
-          <i class="fas fa-code"></i>
-          <h3>Web Development</h3>
-          <p>
-            Saya menyediakan layanan pengembangan website yang mencakup desain
-            front-end dan pengembangan back-end...
-          </p>
+
+    <section id="about" class="min-h-screen flex items-center justify-center bg-gray-800 text-gray-100"
+        data-aos="fade-up" data-aos-duration="2000">
+        <div class="text-center p-8">
+            <h2 class="text-3xl font-semibold mb-4" data-aos="fade-down" data-aos-duration="1500">About Me</h2>
+            <p class="text-lg max-w-lg mb-6" data-aos="fade-up" data-aos-duration="1500">
+                Saya adalah seorang pengembang web yang bersemangat untuk menciptakan pengalaman digital yang menarik
+                dan fungsional. Berfokus pada desain modern dan responsif untuk berbagai perangkat.
+            </p>
+
+            <!-- Tambahkan gambar profil -->
+            <div class="mb-6" data-aos="zoom-in" data-aos-duration="1500">
+                <img src="me5.jpg" alt="Profile Picture"
+                    class="w-32 h-32 mx-auto rounded-full border-4 border-gray-600">
+            </div>
+
+            <!-- Keterampilan -->
+            <div class="text-left mb-6">
+                <h3 class="text-2xl font-semibold mb-2" data-aos="fade-right" data-aos-duration="1500">Skills</h3>
+                <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="100">
+                        <i class="fab fa-html5 text-orange-500 text-3xl"></i>
+                        <span>HTML</span>
+                    </li>
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="200">
+                        <i class="fab fa-css3-alt text-blue-500 text-3xl"></i>
+                        <span>CSS</span>
+                    </li>
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="300">
+                        <i class="fab fa-js-square text-yellow-500 text-3xl"></i>
+                        <span>JavaScript</span>
+                    </li>
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="400">
+                        <i class="fab fa-react text-blue-500 text-3xl"></i>
+                        <span>React.js</span>
+                    </li>
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="500">
+                        <i class="fab fa-node-js text-green-500 text-3xl"></i>
+                        <span>Node.js</span>
+                    </li>
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="900">
+                        <svg fill="#646cff" viewBox="0 0 1024 963.4" xmlns="http://www.w3.org/2000/svg"
+                            class="w-10 h-10">
+                            <path d="m0 234.7 285.3 727.6 31.6-798.8z" />
+                            <path d="m389.3 149.8-94 813.6 728.7-963.4z" />
+                        </svg>
+                        <span>Vite</span>
+                    </li>
+
+
+
+
+                    <!-- Ikon PHP -->
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="700">
+                        <i class="fab fa-php text-blue-600 text-3xl"></i>
+                        <span>PHP</span>
+                    </li>
+
+                    <!-- Ikon Python -->
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="800">
+                        <i class="fab fa-python text-yellow-500 text-3xl"></i>
+                        <span>Python</span>
+                    </li>
+
+                    <!-- Ikon Bootstrap -->
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="900">
+                        <i class="fab fa-bootstrap text-purple-500 text-3xl"></i>
+                        <span>Bootstrap</span>
+                    </li>
+
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="1000">
+                        <svg fill="#5baff3" class="w-10 h-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            xml:space="preserve">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M12 6.036c-2.667 0-4.333 1.325-5 3.976 1-1.325 2.167-1.822 3.5-1.491.761.189 1.305.738 1.906 1.345C13.387 10.855 14.522 12 17 12c2.667 0 4.333-1.325 5-3.976-1 1.325-2.166 1.822-3.5 1.491-.761-.189-1.305-.738-1.907-1.345-.98-.99-2.114-2.134-4.593-2.134zM7 12c-2.667 0-4.333 1.325-5 3.976 1-1.326 2.167-1.822 3.5-1.491.761.189 1.305.738 1.907 1.345.98.989 2.115 2.134 4.594 2.134 2.667 0 4.333-1.325 5-3.976-1 1.325-2.167 1.822-3.5 1.491-.761-.189-1.305-.738-1.906-1.345C10.613 13.145 9.478 12 7 12z" />
+                        </svg>
+
+                        <span>Tailwind</span>
+                    </li>
+
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="1100">
+                        <i class="fas fa-database text-gray-500 text-3xl"></i>
+                        <span>MySQL</span>
+                    </li>
+                    <li class="flex items-center space-x-3" data-aos="fade-up" data-aos-duration="1500"
+                        data-aos-delay="1200">
+                        <i class="fab fa-git text-red-500 text-3xl"></i>
+                        <span>Git</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="service-box">
-          <i class="fas fa-paint-brush"></i>
-          <h3>UI/UX Design</h3>
-          <p>
-            Menciptakan pengalaman pengguna yang menarik dan antarmuka yang
-            mudah digunakan adalah salah satu keahlian saya...
-          </p>
-        </div>
-        <div class="service-box">
-          <i class="fas fa-mobile-alt"></i>
-          <h3>Mobile App Development</h3>
-          <p>
-            Selain pengembangan website, saya juga berpengalaman dalam
-            mengembangkan aplikasi mobile...
-          </p>
-        </div>
-        <div class="service-box">
-          <i class="fas fa-search"></i>
-          <h3>SEO Optimization</h3>
-          <p>
-            Optimasi SEO yang saya lakukan akan membantu meningkatkan
-            visibilitas website di mesin pencari...
-          </p>
-        </div>
-      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-      <h2 class="heading">My <span>Skills</span></h2>
-      <div class="skills-container">
-        <div class="skill-box">
-          <i class="fab fa-html5"></i>
-          <h3>HTML5</h3>
-          <p>Pengalaman dalam membuat markup yang semantik dan responsif.</p>
+
+    <section id="projects"
+        class="min-h-screen flex flex-col items-center justify-center bg-gray-800 text-gray-100 py-16"
+        data-aos="fade-up" data-aos-duration="2000">
+        <h2 class="text-4xl text-center font-semibold mb-8" data-aos="fade-right" data-aos-duration="2000">
+            My Projects
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
+            <!-- Project 1 -->
+            <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-aos="fade-up"
+                data-aos-duration="2000">
+                <img src="project1.jpg" alt="Project 1" class="w-full h-48 object-cover rounded-md mb-4">
+                <h3 class="text-2xl font-semibold mb-2">Kopita Coffea</h3>
+                <p class="text-gray-300 mb-4">Website "Kopita Coffea" menggunakan framework modern seperti React atau
+                    Vite dengan desain responsif.</p>
+                <a href="https://kopitacoffea.vercel.app" target="_blank"
+                    class="text-orange-500 hover:text-orange-600">View
+                    Project</a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-aos="fade-up"
+                data-aos-duration="2000" data-aos-delay="200">
+                <img src="project2.png" alt="Project 2" class="w-full h-48 object-cover rounded-md mb-4">
+                <h3 class="text-2xl font-semibold mb-2">flame-css</h3>
+                <p class="text-gray-300 mb-4">Website tersebut menggunakan Flame CSS untuk desainnya, yang menampilkan
+                    tampilan modern dan responsif dengan nuansa
+                    minimalis.
+                </p>
+                <a href="https://flame-css.vercel.app/" target="_blank"
+                    class="text-orange-500 hover:text-orange-600">View
+                    Project</a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300" data-aos="fade-up"
+                data-aos-duration="2000" data-aos-delay="400">
+                <img src="project3.jpg" alt="Project 3" class="w-full h-48 object-cover rounded-md mb-4">
+                <h3 class="text-2xl font-semibold mb-2">andy-ai</h3>
+                <p class="text-gray-300 mb-4">Website Andy-AI merupakan aplikasi AI berbasis web yang memungkinkan
+                    pengguna berinteraksi dengan sistem AI untuk
+                    berbagai keperluan.</p>
+                <a href="https://andy-ai-red.vercel.app/" target="_blank"
+                    class="text-orange-500 hover:text-orange-600">View
+                    Project</a>
+            </div>
         </div>
-        <div class="skill-box">
-          <i class="fab fa-css3-alt"></i>
-          <h3>CSS3</h3>
-          <p>Keahlian dalam mendesain tampilan yang menarik dan responsif.</p>
-        </div>
-        <div class="skill-box">
-          <i class="fab fa-js"></i>
-          <h3>JavaScript</h3>
-          <p>Pengembangan interaksi dinamis dan fungsionalitas web.</p>
-        </div>
-        <div class="skill-box">
-          <i class="fab fa-react"></i>
-          <h3>React</h3>
-          <p>Pengalaman dalam membangun aplikasi web menggunakan React.</p>
-        </div>
-        <div class="skill-box">
-          <i class="fab fa-node-js"></i>
-          <h3>Node.js</h3>
-          <p>Pengembangan aplikasi server-side dengan Node.js.</p>
-        </div>
-      </div>
     </section>
 
-    <section id="education" class="education">
-      <h2 class="heading">My <span>Education</span></h2>
-      <div class="education-container">
-        <div class="education-box">
-          <h3>Bachelor of Computer Science</h3>
-          <p>University of XYZ, 2018 - 2022</p>
-          <p>Specialized in software development and algorithms.</p>
+    <section id="contact"
+        class="min-h-screen flex items-center justify-center bg-gray-700 text-gray-100 contact-section"
+        data-aos="fade-up" data-aos-duration="1500">
+        <div class="text-center p-8">
+            <h2 class="text-3xl font-semibold mb-4">Contact Me</h2>
+            <p class="text-lg max-w-lg mb-6">
+                Jika Anda tertarik untuk bekerja sama, jangan ragu untuk menghubungi saya melalui media sosial atau
+                WhatsApp.
+            </p>
+
+            <!-- Ikon Google dan Gmail menggunakan Font Awesome -->
+            <div class="flex justify-center space-x-6 mb-4">
+                <!-- Ikon Google -->
+                <a href="https://www.github.com/Andy0703-E" target="_blank" class="text-gray-300 hover:text-gray-900">
+                    <i class="fab fa-github text-4xl"></i>
+                </a>
+                <!-- Ikon Gmail -->
+                <a href="https://wwww.instagram.com/dadung0703" target="_blank"
+                    class="text-gray-300 hover:text-orange-900">
+                    <i class="fab fa-instagram text-4xl"></i>
+                </a>
+                <a href="https://wwww.instagram.com/dadung.dadung.169405" target="_blank"
+                    class="text-gray-300 hover:text-blue-900">
+                    <i class="fab fa-facebook text-4xl"></i>
+                </a>
+            </div>
+
+            <!-- Tombol WhatsApp -->
+            <a href="https://wa.me/62085825163362" target="_blank"
+                class="whatsapp-btn bg-orange-500 hover:bg-green-600 text-white py-2 px-4 rounded-full transition duration-300">Chat
+                with me on WhatsApp</a>
         </div>
-        <div class="education-box">
-          <h3>Diploma in Web Development</h3>
-          <p>Institute of Technology, 2016 - 2018</p>
-          <p>Focused on HTML, CSS, JavaScript, and PHP.</p>
-        </div>
-        <div class="education-box">
-          <h3>Certified Web Designer</h3>
-          <p>Online Academy, 2020</p>
-          <p>Completed courses on UI/UX design and responsive design.</p>
-        </div>
-        <div class="education-box">
-          <h3>Mastering JavaScript</h3>
-          <p>Online Course, 2021</p>
-          <p>In-depth study of JavaScript and its frameworks.</p>
-        </div>
-        <div class="education-box">
-          <h3>Full Stack Developer Bootcamp</h3>
-          <p>Tech Bootcamp, 2023</p>
-          <p>Comprehensive training in front-end and back-end development.</p>
-        </div>
-      </div>
     </section>
 
-    <section id="experience" class="experience">
-      <h2 class="heading">My <span>Experience</span></h2>
-      <div class="experience-container">
-        <div class="experience-box">
-          <h3>Web Developer Intern</h3>
-          <p>ABC Company, 2021</p>
-          <p>
-            Developed and maintained the company website, focusing on user
-            experience and responsive design.
-          </p>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-100 py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-lg">© 2024 Andi Agung. All rights reserved.</p>
         </div>
-        <div class="experience-box">
-          <h3>Junior Frontend Developer</h3>
-          <p>XYZ Corp, 2022</p>
-          <p>
-            Worked on a team to build web applications using React and
-            JavaScript, enhancing application performance and usability.
-          </p>
         </div>
-        <div class="experience-box">
-          <h3>Fullstack Developer</h3>
-          <p>Tech Solutions, 2023</p>
-          <p>
-            Led a team in developing full-stack web applications, improving
-            system efficiency and user satisfaction.
-          </p>
-        </div>
-        <div class="experience-box">
-          <h3>Freelance Developer</h3>
-          <p>Self-employed, 2020 - Present</p>
-          <p>
-            Provided web development services to various clients, focusing on
-            custom solutions and client satisfaction.
-          </p>
-        </div>
-        <div class="experience-box">
-          <h3>Software Engineer</h3>
-          <p>Future Tech, 2024</p>
-          <p>
-            Working on advanced software projects, integrating AI solutions into
-            web applications.
-          </p>
-        </div>
-      </div>
-      <div class="footer-content">
-        <p>&copy; Andi Agung 2024.</p>
-      </div>
-    </section>
+    </footer>
 
-    <script src="script.js"></script>
-  </body>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
 </html>
